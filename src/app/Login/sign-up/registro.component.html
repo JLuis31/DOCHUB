@@ -1,0 +1,19 @@
+<div class="registro-container">
+  <app-nav-login></app-nav-login>
+
+  <section class="registro-form">
+    <h3>Registrate gratis</h3>
+    <p>Crea una cuenta para manejar tus documentos de manera más eficiente.</p>
+    <div class="input-container">
+      <input [(ngModel)]="nombre" type="text" placeholder="Nombre" />
+      <input [(ngModel)]="email" type="email" placeholder="Correo electrónico" />
+      <input [(ngModel)]="password" type="password" placeholder="Contraseña" />
+      <input [(ngModel)]="confirmPassword" type="password" placeholder="Confirmar contraseña" />
+      <button (click)="onSubmit()">Registrarse</button>
+    </div>
+    <p>
+      Al registrarte, aceptas nuestros <a href="">Términos de servicio</a> y
+      <a href="">Política de privacidad</a>.
+    </p>
+  </section>
+</div>

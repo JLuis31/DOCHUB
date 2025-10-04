@@ -1,0 +1,18 @@
+<nav>
+  <header><h2>DOCHUB</h2></header>
+  <div>
+    <img src="assets/imagenes-menu/inicio.png" alt="Inicio" /> <a href="/dashboard">Dashboard</a>
+  </div>
+  <div>
+    <img src="assets/imagenes-menu/documento.png" alt="Documentos" />
+    <a href="/documentos">Documentos</a>
+  </div>
+  <div><img src="assets/imagenes-menu/editar.png" alt="Editar" /> <a href="/perfil">Perfil</a></div>
+  <div>
+    <img src="assets/imagenes-menu/papelera-de-reciclaje.png" alt="Papelera de reciclaje" />
+    <a href="/papelera">papelera </a>
+  </div>
+
+  <button *ngIf="sesionIniciado">Cargar Documentos</button>
+  <button><a routerLink="/login">Iniciar Sesión</a></button>
+</nav>

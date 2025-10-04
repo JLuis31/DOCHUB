@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+}

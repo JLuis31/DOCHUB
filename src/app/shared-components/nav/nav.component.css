@@ -1,0 +1,59 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(248, 248, 248);
+  padding: 1rem;
+  height: 100vh;
+
+  header h2 {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    list-style: none;
+    color: rgb(107, 107, 107);
+    text-decoration: none;
+  }
+
+  button {
+    color: white;
+    border: none;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    background-color: rgb(56, 126, 255);
+    margin-top: auto;
+
+    a {
+      list-style: none;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  img {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+    justify-content: left;
+    padding: 0.5rem;
+  }
+
+  div:hover {
+    background-color: rgb(228, 228, 228);
+    border-radius: 0.5rem;
+    text-align: center;
+
+    img,
+    a {
+      filter: brightness(0) saturate(100%) invert(36%) sepia(86%) saturate(2742%) hue-rotate(217deg)
+        brightness(94%) contrast(93%);
+    }
+  }
+}

@@ -1,0 +1,50 @@
+section {
+  padding: 1rem;
+}
+
+.custom-file {
+  background: #2196f3;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: auto;
+  padding: 0.5rem;
+}
+.custom-file:hover {
+  background: #1976d2;
+}
+
+section {
+  h2 {
+    margin-bottom: 3rem;
+  }
+  .upload-section {
+    text-align: center;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto 0 auto;
+    gap: 1rem;
+    width: auto;
+
+    img {
+      width: 50px;
+      height: auto;
+      margin: auto;
+    }
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .upload-section:hover {
+    border-color: #2196f3;
+    background-color: #f0f8ff;
+  }
+}
