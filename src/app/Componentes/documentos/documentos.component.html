@@ -1,0 +1,20 @@
+<app-loader></app-loader>
+
+<div class="contenedor">
+  <div class="menu-escritorio"><app-nav></app-nav></div>
+  <div class="menu-movil"><app-nav-responsivo></app-nav-responsivo></div>
+
+  <section class="documentos">
+    <header><h2>Documentos</h2></header>
+    <div class="document-section">
+      <h4>Nueva carga de archivos</h4>
+      <div (click)="validarSesion()" class="upload-section">
+        <img src="assets/carga-documentos/subir.png" alt="subida" />
+        <p>Arrastra y suelta archivos aquí o haz clic para seleccionar.</p>
+        <input (change)="ArchivoSeleccionado($event)" type="file" id="archivo" hidden />
+        <label class="custom-file"> 📂 Seleccionar archivo </label>
+        <label for="archivo">Archivo seleccionado: {{ NombreArchivoSeleccionado }}</label>
+      </div>
+    </div>
+  </section>
+</div>

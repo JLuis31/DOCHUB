@@ -1,0 +1,49 @@
+<div class="contenedor">
+  <div class="menu-escritorio"><app-nav></app-nav></div>
+  <div class="menu-movil"><app-nav-responsivo></app-nav-responsivo></div>
+  <section class="documentos">
+    <header>
+      <h2>Perfil</h2>
+      <h4>Información del usuario</h4>
+    </header>
+
+    <div class="perfil">
+      <h3>Información del perfil</h3>
+      <hr />
+
+      <div class="info-perfil">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ nombre }}" disabled />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ email }}" disabled />
+      </div>
+    </div>
+    <div class="seguridad">
+      <h3>Seguridad</h3>
+      <hr />
+      <div class="info-seguridad">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" value="{{ contrasena }}" name="password" disabled />
+      </div>
+    </div>
+
+    <div class="suscripcion">
+      <h3>Suscripción</h3>
+      <hr />
+      <div class="info-suscripcion">
+        <div>
+          <label for="suscripcion">Tipo de suscripción:</label>
+          <label type="text" id="suscripcion" name="suscripcion" disabled>{{ suscripcion }}</label>
+        </div>
+        <hr />
+        <div>
+          <label for="fechaRenovacion">Fecha de renovación:</label>
+          <label type="text" id="fechaRenovacion" name="fechaRenovacion" disabled>{{
+            fechaRenovacion
+          }}</label>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,18 +1,30 @@
 <nav>
-  <header><h2>DOCHUB</h2></header>
+  <button class="menu-btn" (click)="menuAbierto = !menuAbierto">&#9776;</button>
+
+  <header [ngClass]="{ abierto: menuAbierto }"><h2>DOCHUB</h2></header>
   <div>
-    <img src="assets/imagenes-menu/inicio.png" alt="Inicio" /> <a href="/dashboard">Dashboard</a>
+    <a routerLink="/dashboard"><fa-icon size="lg" [icon]="faHome"></fa-icon> Inicio</a>
   </div>
   <div>
-    <img src="assets/imagenes-menu/documento.png" alt="Documentos" />
-    <a href="/documentos">Documentos</a>
+    <a routerLink="/documentos"
+      ><fa-icon size="lg" [icon]="faUpload"></fa-icon> Carga de Documentos</a
+    >
   </div>
-  <div><img src="assets/imagenes-menu/editar.png" alt="Editar" /> <a href="/perfil">Perfil</a></div>
   <div>
-    <img src="assets/imagenes-menu/papelera-de-reciclaje.png" alt="Papelera de reciclaje" />
-    <a href="/papelera">papelera </a>
+    <a routerLink="/historial-documentos"
+      ><fa-icon size="lg" [icon]="faFileAlt"></fa-icon> Documentos</a
+    >
+  </div>
+  <div>
+    <a routerLink="/perfil"><fa-icon size="lg" [icon]="faUser"></fa-icon> Perfil</a>
   </div>
 
-  <button *ngIf="sesionIniciado">Cargar Documentos</button>
-  <button><a routerLink="/login">Iniciar Sesión</a></button>
+  <div class="btn-container" [ngClass]="{ abierto: menuAbierto }">
+    <button class="btn-general" *ngIf="sesionIniciado">
+      <a (click)="Logout()" routerLink="/logout">Cerrar Sesión</a>
+    </button>
+    <button class="btn-general" *ngIf="!sesionIniciado">
+      <a routerLink="/login">Iniciar Sesión</a>
+    </button>
+  </div>
 </nav>

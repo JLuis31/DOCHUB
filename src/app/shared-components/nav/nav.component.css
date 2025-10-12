@@ -1,11 +1,67 @@
+@media (max-width: 600px) {
+  nav {
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+  }
+  nav header {
+    width: 100%;
+    text-align: center;
+  }
+  nav .menu-btn {
+    width: 2rem;
+  }
+  nav .menu-desplegable {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: white;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, opacity 0.3s;
+    padding: 1rem;
+  }
+  nav .menu-desplegable.abierto {
+    max-height: 900px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 601px) {
+  .menu-btn {
+    display: none;
+  }
+}
+
 nav {
   display: flex;
   flex-direction: column;
-  background-color: rgb(248, 248, 248);
   padding: 1rem;
+  padding-top: 0%;
+  padding-bottom: 0%;
   height: 100vh;
+  background-color: rgb(237, 243, 255);
+  z-index: 1;
+
+  div {
+    a {
+      text-overflow: hidden;
+      white-space: nowrap;
+    }
+  }
 
   header h2 {
+    padding: 0.5rem;
+
     margin-bottom: 2rem;
   }
 
@@ -15,14 +71,21 @@ nav {
     text-decoration: none;
   }
 
-  button {
+  .btn-container:hover {
+    background-color: transparent;
+  }
+
+  .btn-general {
     color: white;
     border: none;
-    padding: 0.3rem;
+    padding: 0.5rem;
     border-radius: 0.3rem;
+    text-align: center;
+    margin: auto;
     cursor: pointer;
     background-color: rgb(56, 126, 255);
-    margin-top: auto;
+    margin-bottom: 10px;
+    width: 100%;
 
     a {
       list-style: none;

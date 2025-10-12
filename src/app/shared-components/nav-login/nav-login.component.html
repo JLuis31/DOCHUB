@@ -1,13 +1,18 @@
-<nav>
-  <header><a (click)="irAHome()" style="cursor: pointer">DOCHUB</a></header>
-  <div>
-    <a routerLink="/productos">Producto</a>
+<nav class="nav-login">
+  <fa-icon class="menu-btn" [icon]="faBars" (click)="menuAbierto = !menuAbierto"></fa-icon>
+  <header [ngClass]="{ abierto: menuAbierto }">
+    <a (click)="irAHome()" style="cursor: pointer">DOCHUB</a>
+  </header>
+  <div class="links menu-desplegable" [ngClass]="{ abierto: menuAbierto }">
+    <a routerLink="/producto">Producto</a>
     <a routerLink="/soluciones">Soluciones</a>
     <a routerLink="/precios">Precios</a>
     <a routerLink="/recursos">Recursos</a>
   </div>
-  <button (click)="cambioFuncion()">
-    <span *ngIf="mostrarInicioSesion">Registrate</span>
-    <span *ngIf="mostrarRegistro">Iniciar Sesión</span>
-  </button>
+  <div [ngClass]="{ abierto: menuAbierto }">
+    <button (click)="cambioFuncion()">
+      <span *ngIf="mostrarInicioSesion">Registrate</span>
+      <span *ngIf="mostrarRegistro">Iniciar Sesión</span>
+    </button>
+  </div>
 </nav>

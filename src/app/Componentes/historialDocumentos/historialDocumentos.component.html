@@ -1,0 +1,120 @@
+<app-loader></app-loader>
+
+<div class="contenedor">
+  <div class="menu-escritorio"><app-nav></app-nav></div>
+  <div class="menu-movil"><app-nav-responsivo></app-nav-responsivo></div>
+
+  <section class="documentos">
+    <header>
+      <h2>Historial de Documentos</h2>
+      <h4>Aquí puedes ver el historial de documentos.</h4>
+    </header>
+    <button
+      *ngIf="selection.hasValue()"
+      (click)="eliminarDocumentosSeleccionados()"
+      class="eliminar-registros"
+    >
+      Eliminar registros
+    </button>
+
+    <div class="example-container mat-elevation-z3">
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+        </mat-form-field>
+      </div>
+      <mat-table #table [dataSource]="DocumentosFormateados">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+            >
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox
+              *ngIf="row.estado === 'Activo'"
+              (click)="$event.stopPropagation()"
+              (change)="onCheckboxChange($event, row)"
+              [checked]="selection.isSelected(row)"
+            >
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="numeracion">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Numeración
+          </mat-header-cell>
+          <mat-cell style="justify-content: center" *matCellDef="let doc; let i = index">
+            {{ i + 1 }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="titulo">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Titulo
+          </mat-header-cell>
+          <mat-cell style="justify-content: start" *matCellDef="let doc">
+            {{ doc.titulo }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Estado
+          </mat-header-cell>
+          <mat-cell style="justify-content: center" *matCellDef="let doc">
+            {{ doc.estado }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Tipo
+          </mat-header-cell>
+          <mat-cell style="justify-content: center" *matCellDef="let doc">
+            {{ doc.tipo.toUpperCase() }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaCarga">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Fecha de Carga
+          </mat-header-cell>
+          <mat-cell style="justify-content: center" *matCellDef="let doc">
+            {{ doc.fechaCarga | date : 'short' }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descargar">
+          <mat-header-cell style="justify-content: center" *matHeaderCellDef>
+            Descargar
+          </mat-header-cell>
+          <mat-cell *matCellDef="let doc">
+            <a
+              *ngIf="doc.estado === 'Activo'"
+              [href]=""
+              (click)="descargarDocumentos(doc)"
+              style="margin: auto; cursor: pointer"
+              download
+              ><fa-icon [icon]="faDownload"></fa-icon
+            ></a>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnasMostradas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnasMostradas"></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15]"
+        [showFirstLastButtons]="true"
+      >
+      </mat-paginator>
+    </div>
+  </section>
+</div>

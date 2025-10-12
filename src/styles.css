@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://cdn.jsdelivr.net/npm/primeng@17.18.10/resources/themes/saga-blue/theme.css');
+@import url('https://cdn.jsdelivr.net/npm/primeng@17.18.10/resources/primeng.css');
+
 * {
   padding: 0%;
   margin: 0%;
@@ -14,5 +17,10 @@ button:hover {
 .contenedor {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  height: 100vh;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

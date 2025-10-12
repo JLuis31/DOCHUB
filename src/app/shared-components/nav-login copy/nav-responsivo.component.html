@@ -1,0 +1,20 @@
+<nav class="nav-login">
+  <fa-icon [icon]="fabars" (click)="menuAbierto = !menuAbierto"></fa-icon>
+  <header [ngClass]="{ abierto: menuAbierto }">
+    <a (click)="irAHome()" style="cursor: pointer">DOCHUB</a>
+  </header>
+  <div class="links menu-desplegable" [ngClass]="{ abierto: menuAbierto }">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/documentos">Carga Documentos</a>
+    <a href="/historial-documentos">Documentos</a>
+    <a href="/perfil">Perfil</a>
+  </div>
+  <div [ngClass]="{ abierto: menuAbierto }">
+    <button *ngIf="!sesionIniciado">
+      <a routerLink="/login">Iniciar Sesión</a>
+    </button>
+    <button *ngIf="sesionIniciado">
+      <a (click)="Logout()" routerLink="/logout">Cerrar Sesión</a>
+    </button>
+  </div>
+</nav>

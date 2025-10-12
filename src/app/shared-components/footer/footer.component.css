@@ -1,6 +1,5 @@
 .footer-container {
   box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
-  margin-top: 4rem;
   background-color: white;
 }
 
@@ -10,7 +9,7 @@ hr {
   margin: 0;
 }
 
-.footer-content {
+footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -31,7 +30,7 @@ hr {
     div {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       gap: 1rem;
       margin-left: auto;
@@ -53,7 +52,7 @@ hr {
 .footer-links {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 
   a {
     list-style: none;
