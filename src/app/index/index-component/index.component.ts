@@ -87,6 +87,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('accessToken') === null) {
       this.sharedServices.InformacionGenerica('Debe iniciar sesion para continuar');
+      this.loader.stop();
+      return;
     }
     this.loader.start();
 
@@ -101,16 +103,15 @@ export class DashboardComponent implements OnInit {
           )
           .subscribe({
             next: (res) => {
-              this.espacioOcupado = res.tamanios
+              console.log(res);
+              this.espacioOcupado = res.value
                 .map((doc: any) => doc.tamano)
                 .reduce((a: number, b: number) => a + b, 0);
               this.valorActual = this.espacioOcupado / (1024 * 1024);
-              console.log(this.espacioOcupado);
-              console.log(this.valorActual);
 
-              this.archivosSeleccionados2 = res.ultimos4;
+              this.archivosSeleccionados2 = res.value;
 
-              this.archivosSeleccionados2 = res.ultimos4.map((doc: any) => ({
+              this.archivosSeleccionados2 = res.value.map((doc: any) => ({
                 ...doc,
                 archivo: doc.archivo ?? doc.titulo,
                 contenidoBase64: doc.contenidoBase64 ?? null,
