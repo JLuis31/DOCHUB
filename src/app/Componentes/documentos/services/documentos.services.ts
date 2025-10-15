@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DocumentosService {
-  public ruta = 'https://dochub-api-szo1.onrender.com/api/documentos';
-  //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/documentos';
+  public ruta = environment.apiUrlDocumentos;
   private id: string = '';
   constructor(private http: HttpClient) {}
 

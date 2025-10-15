@@ -4,14 +4,14 @@ import { Usuario } from '../../../Interfaces/Usuarios.interfaces';
 import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
 import { Console } from 'console';
 import { Router } from '@angular/router';
+import { environment } from '../../../../enviroment/enviroment';
 import { SharedServices } from '../../../shared-services/shared-services';
 @Injectable({
   providedIn: 'root',
 })
 export class AutentificacionService {
-  public ruta = 'https://dochub-api-szo1.onrender.com/api/Usuarios';
+  public ruta = environment.apiUrlUsuarios;
 
-  //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/Usuarios';
   private loggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn = this.loggedIn.asObservable();
 
