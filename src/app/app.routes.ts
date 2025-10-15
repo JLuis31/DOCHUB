@@ -22,5 +22,5 @@ export const routes: Routes = [
   { path: 'producto', component: ProductoComponent },
   { path: 'recursos', component: RecursosComponent },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/dashboard' },
+  { path: '**', redirectTo: '/login' },
 ];
