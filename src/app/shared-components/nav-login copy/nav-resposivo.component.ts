@@ -51,7 +51,7 @@ export class NavLoginComponentResponsivo implements OnInit {
 
   public irAHome() {
     this.navStateService.resetearEstado();
-    this.router.navigate(['/']);
+    this.router.navigate(['/dashboard']);
   }
   public Logout(): void {
     this.authService.Logout();
