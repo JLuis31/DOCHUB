@@ -11,7 +11,7 @@ import { PerfilComponent } from './Componentes/Perfil/perfil.component';
 import { RecursosComponent } from './Componentes/Recursos/recursos.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'registro', component: RegistroComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'documentos', component: DocumentosComponent },
