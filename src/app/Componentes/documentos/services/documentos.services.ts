@@ -6,14 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DocumentosService {
-  private ruta = 'http://localhost:5123/api/documentos';
+  public ruta = 'http://dochub-api-szo1.onrender.com/api/documentos';
+  //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/documentos';
   private id: string = '';
   constructor(private http: HttpClient) {}
 
   public SubirDocumento(
     nombreArchivo: string,
     rutaArchivo: string,
-    archivo: File
+    archivo: File,
+    tamaño: number
   ): Observable<any> {
     this.id = localStorage.getItem('idUsuario') || '';
     const formData = new FormData();
@@ -21,31 +23,19 @@ export class DocumentosService {
     formData.append('nombreArchivo', nombreArchivo);
     formData.append('rutaArchivo', rutaArchivo);
     formData.append('archivo', archivo);
+    formData.append('tamaño', tamaño.toString());
 
     return this.http.post(`${this.ruta}`, formData, { withCredentials: true });
   }
 
   public ObtenerDocumentosActivos(): Observable<any> {
     this.id = localStorage.getItem('idUsuario') || '';
-    return this.http.get(`${this.ruta}/documentos-activos?idUsuario=${this.id}`);
+    return this.http.get(`${this.ruta}/documentos-activos`);
   }
 
   public ObtenerDocumentos(titulo: string[], ruta: string[]): Observable<any> {
-    this.id = localStorage.getItem('idUsuario') || '';
-
     return this.http.get(
-      `${this.ruta}/archivosRecientes?idUsuario=${this.id}&titulo=${titulo.join(
-        ','
-      )}&ruta=${ruta.join(',')}`,
-      {
-        withCredentials: true,
-      }
+      `${this.ruta}/archivosRecientes?titulo=${titulo.join(',')}&ruta=${ruta.join(',')}`
     );
-  }
-
-  public GenerarUrlFirmada(titulo: string): Observable<any> {
-    return this.http.get(`${this.ruta}/generar-url-firmada?titulo=${titulo}`, {
-      withCredentials: true,
-    });
   }
 }

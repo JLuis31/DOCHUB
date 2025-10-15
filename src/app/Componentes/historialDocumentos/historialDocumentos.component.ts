@@ -84,12 +84,12 @@ export class HistorialDocumentosComponent implements OnInit {
       next: (res) => {
         this.documentos = res.datos;
         this.contador = res.datos.length;
-
         const datosFormateados = this.documentos.map((doc) => {
           const partes = doc.titulo.split('.');
+
           return {
             ...doc,
-            estado: doc.idEstado === 1 ? 'Activo' : 'Inactivo',
+            estado: doc.idestado === '1114885399933747201' ? 'Activo' : 'Inactivo',
             titulo: partes.slice(0, -1).join('.') || 'Sin título',
             tipo: partes.length > 1 ? partes[partes.length - 1] : 'Desconocido',
           };

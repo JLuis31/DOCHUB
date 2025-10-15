@@ -1,0 +1,77 @@
+<app-loader></app-loader>
+
+<div class="contenedor">
+  <div class="menu-escritorio"><app-nav></app-nav></div>
+  <div class="menu-movil"><app-nav-responsivo></app-nav-responsivo></div>
+  <section class="documentos">
+    <header>
+      <h2>Inicio</h2>
+      <h4>Documentos recientes</h4>
+    </header>
+    <div class="galeria-documentos" *ngIf="archivosSeleccionados2?.length">
+      <div class="tarjeta-documento" *ngFor="let archivo of archivosSeleccionados2; let i = index">
+        <div class="preview">
+          <ng-container *ngIf="archivo?.archivo?.trim().toLowerCase().endsWith('.pdf'); else noPdf">
+            <canvas [id]="'pdf-canvas-' + i"></canvas>
+          </ng-container>
+          <ng-template #noPdf>
+            <ng-container
+              class="contenedor-de-archivo"
+              *ngIf="
+                archivo?.archivo?.toLowerCase().endsWith('.mp4') ||
+                  archivo?.archivo?.toLowerCase().endsWith('.webm');
+                else noVideo
+              "
+            >
+              <video width="150" controls [src]="getVideoUrl(archivo)"></video>
+            </ng-container>
+            <ng-template #noVideo>
+              <ng-container
+                *ngIf="
+                  archivo?.archivo &&
+                    (archivo.archivo.toLowerCase().includes('.png') ||
+                      archivo.archivo.toLowerCase().includes('.jpg') ||
+                      archivo.archivo.toLowerCase().includes('.jpeg') ||
+                      archivo.archivo.toLowerCase().includes('.gif') ||
+                      archivo.archivo.toLowerCase().includes('.webp'));
+                  else icono
+                "
+              >
+                <img
+                  [src]="getImagenUrl(archivo)"
+                  class="miniatura-imagen"
+                  alt="vista previa imagen"
+                />
+              </ng-container>
+            </ng-template>
+          </ng-template>
+          <ng-template #icono>
+            <fa-icon [icon]="getIconoDocumento(archivo?.archivo)" class="icono-archivo"></fa-icon>
+          </ng-template>
+        </div>
+
+        <div class="info">
+          <h4 class="titulo">
+            {{ archivo?.archivo ? (archivo.archivo | slice : 0 : 30) : 'Sin título' }}
+            {{ archivo?.archivo && archivo.archivo.length > 30 ? '…' : '' }}
+          </h4>
+          <p class="fecha">
+            {{ archivo?.fechaCarga | date : 'd MMMM y' : '' : 'es' }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="sesionUsuario" class="barra-progreso-contenedor">
+      <div class="barra-progreso-elementos">
+        <h3 class="titulo-almacenamiento">Almacenamiento utilizado (MB)</h3>
+        <label for="porcentaje">{{ espacioOcupado.toFixed(2) }}%</label>
+      </div>
+      <mat-progress-bar
+        class="barra-progreso"
+        mode="determinate"
+        [value]="(espacioOcupado / valorMaximo) * 100"
+      >
+      </mat-progress-bar>
+    </div>
+  </section>
+</div>

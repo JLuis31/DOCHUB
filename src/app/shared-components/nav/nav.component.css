@@ -48,7 +48,7 @@ nav {
   padding: 1rem;
   padding-top: 0%;
   padding-bottom: 0%;
-  height: 100vh;
+  min-height: 100%;
   background-color: rgb(237, 243, 255);
   z-index: 1;
 

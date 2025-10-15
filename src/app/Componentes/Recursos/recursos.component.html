@@ -1,0 +1,108 @@
+<div class="recursos-contenedor">
+  <app-nav-login></app-nav-login>
+  <header class="header-inicial">
+    <h2>Centro de recursos</h2>
+    <p>
+      Aquí encontrarás una variedad de recursos útiles para ayudarte a aprovechar al máximo nuestra
+      plataforma. Desde guías detalladas hasta tutoriales en video, hemos recopilado todo lo que
+      necesitas para comenzar y crecer con nosotros.
+    </p>
+  </header>
+  <section class="recursos">
+    <h3>Preguntas Frecuentes</h3>
+    <div class="preguntasFrecuentes">
+      <div (click)="ocultarContenidoValor(1)">
+        <h4>¿Cómo puedo crear una cuenta?</h4>
+        <p class="respuesta" [class.oculto]="!preguntasVisibles[0]">
+          Crear una cuenta es fácil. Simplemente haz clic en el botón "Registrarse" en la esquina
+          superior derecha y sigue las instrucciones.
+        </p>
+      </div>
+
+      <div (click)="ocultarContenidoValor(2)">
+        <h4>¿Cómo puedo cargar contenido?</h4>
+        <p class="respuesta" [class.oculto]="!preguntasVisibles[1]">
+          Para cargar contenido, inicia sesión en tu cuenta y dirígete a la sección "carga". Desde
+          allí, puedes seleccionar los archivos que deseas cargar y seguir las indicaciones en
+          pantalla.
+        </p>
+      </div>
+
+      <div (click)="ocultarContenidoValor(3)">
+        <h4>¿Cómo puedo acceder a mis documentos?</h4>
+        <p class="respuesta" [class.oculto]="!preguntasVisibles[2]">
+          Tus documentos están disponibles en la sección "documentos" una vez que hayas iniciado
+          sesión. Aquí puedes ver, editar y organizar todos tus archivos.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="features-section2">
+    <header>
+      <h3>Como DOCHUB te ayuda</h3>
+    </header>
+    <div class="features-grid">
+      <div
+        class="img1"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAt1R1aseYexB2_4GQRfG5aUZwoiNg8oWQSbqSlSWDo_bqbMFAs_DuzUvrodmilMNRRfNpLprftX6P51sKLvAJt17i92r4GVqTXQj8hoOzZYMO1QgVJgNLA22PfsdpJt3yjIyJxw04P5w3ddXdp0VjATUUx0lEUhDfYWkJSKUuz1F9lO_US35Ntk257KgRlGyehbR_aTFiKdv09cJeHd37Wfo1OC0r64lpKxl6oRofAOibHXA3AjD2SCRrEW-BWpnd0AZmOB-dD-NN6');
+        "
+      >
+        <h4>Organización eficiente</h4>
+        <p>Clasifica y etiqueta tus archivos para un acceso rápido y fácil.</p>
+      </div>
+      <div
+        class="img2"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7JD_cDWRn911vV5a_mnVQJsrQxKvz9StLl8m_m4Xo6XtI595OKOpUXYeJOYZKCPwjeYRW8Q2X1nPYsidOAwzM7a7F-RyBgwAl0Tl3URcGwvpOkLslQS4To3BYQ53n1dwPRnwsiCbuOwe4QQL-anbts1XS-N-5XK7HQ9MPZ2hPsWV3Emm21zz-EKt-J5rGAeHQVGGF6seA63lX_DYdXNXIFj460o3aZotB7zcmW1RbOkqYC4dAwZvLsAq-1N3r7VFxotx0UygA8Hio');
+        "
+      >
+        <h4>Colaboración efectiva</h4>
+        <p>Trabaja en conjunto con tu equipo y realiza ediciones simultáneas.</p>
+      </div>
+      <div
+        class="img3"
+        style="
+          background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2XGncxVKqlrltNIAFhRLM30kxT_w-Ncyzpgvm3Sn_Iu3tZs1U0Kk96_mvfYQ3ebD1oKk1oS5dxilRCGlQfW43paoeNXpxBCiNZUMgRuHmFpiNVSlTQo7L4MsBD2w6upygGo-ugQgaTDOLSJ5kPoxLz3E9WXeLKoYXMDy7AlH83UiARrXbNk9eqYaDnGM-65pyGmeXdRc5njJelM3WWYSHS1cI4pXWPlMAg5r6nqQ6nDJ72b8o3mMxFv5FVIqVI0X9CplRfN69ayic');
+        "
+      >
+        <h4>Acceso rápido</h4>
+        <p>Accede a tus documentos desde cualquier dispositivo, en cualquier momento.</p>
+      </div>
+    </div>
+  </section>
+  <section class="recursos-adicionales-contenedor">
+    <header><h3>Recursos Adicionales</h3></header>
+    <div class="mejores-practicas">
+      <div class="texto">
+        <h3>Mejores Prácticas</h3>
+        <p>
+          Descubre las mejores prácticas para gestionar y organizar tus documentos de manera
+          eficiente.
+        </p>
+      </div>
+      <div class="imagen-practicas">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2XGncxVKqlrltNIAFhRLM30kxT_w-Ncyzpgvm3Sn_Iu3tZs1U0Kk96_mvfYQ3ebD1oKk1oS5dxilRCGlQfW43paoeNXpxBCiNZUMgRuHmFpiNVSlTQo7L4MsBD2w6upygGo-ugQgaTDOLSJ5kPoxLz3E9WXeLKoYXMDy7AlH83UiARrXbNk9eqYaDnGM-65pyGmeXdRc5njJelM3WWYSHS1cI4pXWPlMAg5r6nqQ6nDJ72b8o3mMxFv5FVIqVI0X9CplRfN69ayic"
+          alt="recursos"
+        />
+      </div>
+    </div>
+
+    <div class="mejores-practicas numero2">
+      <div class="texto">
+        <h3>Mejores Prácticas</h3>
+        <p>
+          Descubre las mejores prácticas para gestionar y organizar tus documentos de manera
+          eficiente.
+        </p>
+      </div>
+      <div class="imagen-practicas">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt1R1aseYexB2_4GQRfG5aUZwoiNg8oWQSbqSlSWDo_bqbMFAs_DuzUvrodmilMNRRfNpLprftX6P51sKLvAJt17i92r4GVqTXQj8hoOzZYMO1QgVJgNLA22PfsdpJt3yjIyJxw04P5w3ddXdp0VjATUUx0lEUhDfYWkJSKUuz1F9lO_US35Ntk257KgRlGyehbR_aTFiKdv09cJeHd37Wfo1OC0r64lpKxl6oRofAOibHXA3AjD2SCRrEW-BWpnd0AZmOB-dD-NN6"
+          alt="recursos"
+        />
+      </div>
+    </div>
+  </section>
+</div>

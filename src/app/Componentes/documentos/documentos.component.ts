@@ -19,6 +19,7 @@ export class DocumentosComponent {
   NombreArchivoSeleccionado: string = '';
   rutaArchivo: string = '';
   public sesionIniciado: boolean = false;
+  public tamañoArchivo: number = 0;
 
   constructor(
     private documentosService: DocumentosService,
@@ -44,12 +45,19 @@ export class DocumentosComponent {
   }
 
   ArchivoSeleccionado(event: any): void {
+    this.tamañoArchivo = event.target.files[0].size / (1024 * 1024);
+    console.log(this.tamañoArchivo);
     this.NombreArchivoSeleccionado = event.target.files[0]?.name || '';
     this.rutaArchivo = event.target.files[0]?.path || '';
     this.loader.start();
     console.log(this.NombreArchivoSeleccionado);
     this.documentosService
-      .SubirDocumento(this.NombreArchivoSeleccionado, this.rutaArchivo, event.target.files[0])
+      .SubirDocumento(
+        this.NombreArchivoSeleccionado,
+        this.rutaArchivo,
+        event.target.files[0],
+        this.tamañoArchivo
+      )
       .subscribe({
         next: (res) => {
           this.sharedServices.ExitoGenerico(
@@ -58,7 +66,9 @@ export class DocumentosComponent {
           this.NombreArchivoSeleccionado = '';
         },
         error: (err) => {
-          this.sharedServices.ErrorGenerico(`Error al subir el documento, ${err.message}`);
+          console.log(err.error.mensaje);
+          this.sharedServices.ErrorGenerico(`Error al subir el documento, ${err.error.mensaje}`);
+          this.loader.stop();
         },
         complete: () => this.loader.stop(),
       });

@@ -280,7 +280,6 @@
   overflow: hidden;
 }
 
-/* Overlay oscuro para mejorar legibilidad del texto */
 .features-section2 .features-grid > div::before {
   content: '';
   position: absolute;
@@ -292,7 +291,6 @@
   z-index: 1;
 }
 
-/* Texto sobre las imágenes */
 .features-section2 .features-grid h4,
 .features-section2 .features-grid p {
   position: relative;

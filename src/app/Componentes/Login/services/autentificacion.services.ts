@@ -9,7 +9,8 @@ import { SharedServices } from '../../../shared-services/shared-services';
   providedIn: 'root',
 })
 export class AutentificacionService {
-  private ruta = 'http://localhost:5123/api/usuarios';
+  public ruta = 'http://dochub-api-szo1.onrender.com/api/Usuarios';
+  //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/Usuarios';
   private loggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn = this.loggedIn.asObservable();
 

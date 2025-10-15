@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { NavComponent } from '../../shared-components/nav/nav.component';
-import { NavLoginComponentResponsivo } from '../../shared-components/nav-login copy/nav-resposivo.component';
-import { DocumentosService } from '../../Componentes/documentos/services/documentos.services';
-import { HistorialDocumentosService } from '../../Componentes/historialDocumentos/services/historialDocumentos.services';
+import { NavComponent } from '../../../shared-components/nav/nav.component';
+import { NavLoginComponentResponsivo } from '../../../shared-components/nav-login copy/nav-resposivo.component';
+import { DocumentosService } from '../../documentos/services/documentos.services';
+import { HistorialDocumentosService } from '../../historialDocumentos/services/historialDocumentos.services';
 import { error } from 'console';
-import { SharedServices } from '../../shared-services/shared-services';
+import { SharedServices } from '../../../shared-services/shared-services';
 import { PDFDocumentProxy, getDocument } from 'pdfjs-dist';
 import * as pdfjsLib from 'pdfjs-dist';
 import { GlobalWorkerOptions } from 'pdfjs-dist';
@@ -16,7 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { LoaderComponent } from '../../shared-components/Loader/loader.component';
+import { LoaderComponent } from '../../../shared-components/Loader/loader.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 registerLocaleData(localeEs, 'es');
@@ -57,6 +57,8 @@ export class DashboardComponent implements OnInit {
   public valorActual: number = 0;
   public valorMaximo: number = 100;
   public espacioOcupado: number = 0;
+  public fechaCarga: string = '';
+  public sesionUsuario: string = '';
 
   constructor(
     private documentosService: DocumentosService,
@@ -79,13 +81,17 @@ export class DashboardComponent implements OnInit {
       case 'xls':
       case 'xlsx':
         return this.faFileExcel;
+      case 'mp4':
+      case 'webm':
+        return this.faFile;
       default:
         return this.faFile;
     }
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('accessToken') === null) {
+    this.sesionUsuario = localStorage.getItem('idUsuario') || '';
+    if (this.sesionUsuario === null || this.sesionUsuario === '') {
       this.sharedServices.InformacionGenerica('Debe iniciar sesion para continuar');
       this.loader.stop();
       return;
@@ -94,7 +100,8 @@ export class DashboardComponent implements OnInit {
 
     this.documentosService.ObtenerDocumentosActivos().subscribe({
       next: (data) => {
-        this.archivosSeleccionados = data.datos;
+        this.archivosSeleccionados = data.datos.slice(0, 4);
+        console.log(data);
 
         this.documentosService
           .ObtenerDocumentos(
@@ -104,17 +111,17 @@ export class DashboardComponent implements OnInit {
           .subscribe({
             next: (res) => {
               console.log(res);
-              this.espacioOcupado = res.value
-                .map((doc: any) => doc.tamano)
-                .reduce((a: number, b: number) => a + b, 0);
-              this.valorActual = this.espacioOcupado / (1024 * 1024);
+              this.fechaCarga = res.documentosActivos.datos.map((doc: any) => doc.fechaCarga);
 
-              this.archivosSeleccionados2 = res.value;
+              this.espacioOcupado = res.archivosTamaño.megabytesUsados;
 
-              this.archivosSeleccionados2 = res.value.map((doc: any) => ({
+              this.archivosSeleccionados2 = res.archivos.value;
+
+              this.archivosSeleccionados2 = res.archivos.value.map((doc: any, i: number) => ({
                 ...doc,
                 archivo: doc.archivo ?? doc.titulo,
                 contenidoBase64: doc.contenidoBase64 ?? null,
+                fechaCarga: this.fechaCarga[i] ?? null,
               }));
 
               this.cdr.detectChanges();
@@ -150,6 +157,13 @@ export class DashboardComponent implements OnInit {
       return `data:image/png;base64,${archivo.contenidoBase64}`;
     }
 
+    return archivo.rutaDestino || archivo.ruta || '';
+  }
+
+  getVideoUrl(archivo: any): string {
+    if (archivo.contenidoBase64) {
+      return `data:video/mp4;base64,${archivo.contenidoBase64}`;
+    }
     return archivo.rutaDestino || archivo.ruta || '';
   }
 

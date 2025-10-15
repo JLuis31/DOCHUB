@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: grey;
+    background: linear-gradient(135deg, #2d5a3d 0%, #1a3a2a 50%, #0d1f15 100%);
     padding: 1rem;
     height: auto;
 

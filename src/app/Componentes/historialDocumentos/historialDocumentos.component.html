@@ -57,7 +57,7 @@
             Titulo
           </mat-header-cell>
           <mat-cell style="justify-content: start" *matCellDef="let doc">
-            {{ doc.titulo }}
+            {{ doc.titulo.split('_')[0] + doc.titulo.slice(doc.titulo.lastIndexOf('.')) }}
           </mat-cell>
         </ng-container>
 

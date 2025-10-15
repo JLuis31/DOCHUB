@@ -1,0 +1,160 @@
+.header-inicial {
+  text-align: center;
+  padding: 2rem;
+  margin-top: -5rem;
+  background: linear-gradient(135deg, #2d5a3d 0%, #1a3a2a 50%, #0d1f15 100%);
+  color: white;
+
+  h2 {
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+  }
+
+  p {
+    opacity: 0.8;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 4rem;
+  }
+}
+
+.recursos {
+  padding: 2rem;
+
+  h3 {
+    align-items: start;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  .preguntasFrecuentes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    margin: auto;
+
+    gap: 1rem;
+    padding: 2rem;
+    padding-top: 1rem;
+    width: 100%;
+
+    div {
+      background-color: rgb(226, 226, 226);
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 100%;
+
+      p {
+        margin-top: 1rem;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.respuesta {
+  opacity: 1;
+  max-height: 100px;
+  overflow: hidden;
+  visibility: visible;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  margin: 0;
+}
+
+.respuesta.oculto {
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+}
+
+.features-section2 {
+  padding: 2rem;
+
+  header {
+    text-align: start;
+  }
+
+  .features-grid {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.features-section2 .features-grid > div {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 300px;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.features-section2 .features-grid > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+.features-section2 .features-grid h4,
+.features-section2 .features-grid p {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.recursos-adicionales-contenedor {
+  padding: 2rem;
+  padding-top: 0%;
+  gap: 1rem;
+
+  header {
+    text-align: start;
+    margin-bottom: 1rem;
+  }
+
+  .mejores-practicas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dadada;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    .texto {
+      display: inline-block;
+      width: 75%;
+
+      p {
+        opacity: 0.7;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .imagen-practicas img {
+      width: 100px;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .numero2 {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+}

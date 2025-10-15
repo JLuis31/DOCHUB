@@ -1,3 +1,8 @@
+.deshabilitado {
+  background-color: grey !important;
+  cursor: not-allowed !important;
+}
+
 section {
   text-align: center;
   align-items: center;
@@ -15,7 +20,7 @@ section {
 
   .planes {
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     margin: 6rem auto;
     width: auto;
@@ -165,5 +170,26 @@ section {
   td img {
     width: 20px;
     height: 20px;
+  }
+}
+
+.tabla-responsiva {
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 800px) {
+  .tabla-responsiva table {
+    font-size: 0.9rem;
+  }
+  .tabla-responsiva th,
+  .tabla-responsiva td {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .tabla-responsiva th:nth-child(3),
+  .tabla-responsiva td:nth-child(3) {
+    display: none;
   }
 }
