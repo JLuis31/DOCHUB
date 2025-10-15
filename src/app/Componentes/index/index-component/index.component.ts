@@ -19,11 +19,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoaderComponent } from '../../../shared-components/Loader/loader.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
-registerLocaleData(localeEs, 'es');
-GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.mjs',
-  import.meta.url
-).toString();
+GlobalWorkerOptions.workerSrc = './assets/pdfjs-dist/build/pdf.worker.mjs';
 
 @Component({
   selector: 'app-dashboard',
