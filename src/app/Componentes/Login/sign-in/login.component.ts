@@ -41,7 +41,7 @@ export class LoginComponent {
             this.sharedServices.LoginExitoso('Inicio de sesión exitoso');
             var token = this.autentificacionService.getToken();
             console.log(token);
-            this.router.navigate(['/']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.sharedServices.ErrorGenerico('Error al iniciar sesión: ' + res.mensaje);
           }
