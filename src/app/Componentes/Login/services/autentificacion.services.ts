@@ -4,7 +4,7 @@ import { Usuario } from '../../../Interfaces/Usuarios.interfaces';
 import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
 import { Console } from 'console';
 import { Router } from '@angular/router';
-import { environment } from '../../../../enviroment/enviroment';
+import { environment } from '../../../../enviroments/enviroment';
 import { SharedServices } from '../../../shared-services/shared-services';
 @Injectable({
   providedIn: 'root',
