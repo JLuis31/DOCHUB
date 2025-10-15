@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class HistorialDocumentosService {
-  public ruta = 'http://dochub-api-szo1.onrender.com/api/documentos';
+  public ruta = 'https://dochub-api-szo1.onrender.com/api/documentos';
   //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/documentos';
   private idUsuario: string = '';
   constructor(private http: HttpClient) {}

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DocumentosService {
-  public ruta = 'http://dochub-api-szo1.onrender.com/api/documentos';
+  public ruta = 'https://dochub-api-szo1.onrender.com/api/documentos';
   //public ruta = 'https://areas-expensive-fascinating-barrel.trycloudflare.com/api/documentos';
   private id: string = '';
   constructor(private http: HttpClient) {}
