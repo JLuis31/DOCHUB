@@ -18,11 +18,11 @@
   <div>
     <a routerLink="/perfil"><fa-icon size="lg" [icon]="faUser"></fa-icon> Perfil</a>
   </div>
+  <div>
+    <a routerLink="/metricas"><fa-icon size="lg" [icon]="faChartBar"></fa-icon> Metricas</a>
+  </div>
 
   <div class="btn-container" [ngClass]="{ abierto: menuAbierto }">
-    <button class="btn-general" *ngIf="sesionIniciado">
-      <a (click)="Logout()" routerLink="/logout">Cerrar Sesión</a>
-    </button>
     <button class="btn-general" *ngIf="!sesionIniciado">
       <a routerLink="/login">Iniciar Sesión</a>
     </button>

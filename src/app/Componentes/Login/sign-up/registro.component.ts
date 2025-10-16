@@ -68,7 +68,6 @@ export class RegistroComponent {
       this.loader.start();
       this.autentificacionService.RegistroUsuario(usuario).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.exito) {
             this.sharedServices.RegistroExitoso('Usuario registrado con éxito');
             this.router.navigate(['/login']);
@@ -77,7 +76,6 @@ export class RegistroComponent {
           }
         },
         error: (err) => {
-          console.log(err);
           this.sharedServices.ErrorGenerico('Error al registrar el usuario: ' + err.message);
         },
         complete: () => this.loader.stop(),

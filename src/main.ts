@@ -20,7 +20,7 @@ bootstrapApplication(App, {
         pbColor: '#4a99ffff',
         pbThickness: 4,
         overlayColor: 'rgba(0,0,0,0.4)',
-        text: 'Cargando información...',
+        text: 'Cargando...',
         textColor: '#FFF',
         textPosition: 'center-center',
       }),

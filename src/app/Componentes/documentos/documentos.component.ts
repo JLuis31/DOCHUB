@@ -46,11 +46,9 @@ export class DocumentosComponent {
 
   ArchivoSeleccionado(event: any): void {
     this.tamañoArchivo = event.target.files[0].size / (1024 * 1024);
-    console.log(this.tamañoArchivo);
     this.NombreArchivoSeleccionado = event.target.files[0]?.name || '';
     this.rutaArchivo = event.target.files[0]?.path || '';
     this.loader.start();
-    console.log(this.NombreArchivoSeleccionado);
     this.documentosService
       .SubirDocumento(
         this.NombreArchivoSeleccionado,
@@ -66,7 +64,6 @@ export class DocumentosComponent {
           this.NombreArchivoSeleccionado = '';
         },
         error: (err) => {
-          console.log(err.error.mensaje);
           this.sharedServices.ErrorGenerico(`Error al subir el documento, ${err.error.mensaje}`);
           this.loader.stop();
         },

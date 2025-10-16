@@ -4,7 +4,14 @@ import { RouterLink } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { AutentificacionService } from '../../Componentes/Login/services/autentificacion.services';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome, faUpload, faFileAlt, faUser, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faUpload,
+  faFileAlt,
+  faUser,
+  faTrash,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +27,7 @@ export class NavComponent implements OnInit {
   public faFileAlt = faFileAlt;
   public faUser = faUser;
   public faTrash = faTrash;
+  public faChartBar = faChartBar;
 
   tokenGuardado = localStorage.getItem('accessToken') || '';
 
@@ -32,15 +40,8 @@ export class NavComponent implements OnInit {
   }
   public prueba(): void {
     this.authService.prueba().subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.error(err);
-      },
+      next: (res) => {},
+      error: (err) => {},
     });
-  }
-  public Logout(): void {
-    this.authService.Logout();
   }
 }

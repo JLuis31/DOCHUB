@@ -36,7 +36,6 @@ export class LoginComponent {
   }
 
   public onSubmit(): void {
-    console.log(this.email, this.password);
     if (this.validarEmail(this.email)) {
       this.loader.start();
       this.autentificacionService.Login(this.email, this.password).subscribe({
@@ -44,7 +43,6 @@ export class LoginComponent {
           if (res.exito) {
             this.sharedServices.LoginExitoso('Inicio de sesión exitoso');
             var token = this.autentificacionService.getToken();
-            console.log(token);
             this.router.navigate(['/dashboard']);
           } else {
             this.sharedServices.ErrorGenerico('Error al iniciar sesión: ' + res.mensaje);
@@ -58,7 +56,6 @@ export class LoginComponent {
         },
       });
     } else {
-      console.log('Correo no válido');
       this.sharedServices.CorreoInvalido('El correo electrónico no es válido');
     }
   }

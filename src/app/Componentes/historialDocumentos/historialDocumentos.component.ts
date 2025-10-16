@@ -15,7 +15,7 @@ import { NavLoginComponentResponsivo } from '../../shared-components/nav-login c
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { LoaderComponent } from '../../shared-components/Loader/loader.component';
 
@@ -51,6 +51,8 @@ export class HistorialDocumentosComponent implements OnInit {
   selection: SelectionModel<any>;
   dataSource = this.DocumentosFormateados;
   public faDownload = faDownload;
+  public faSearch = faSearch;
+  public mostrarFiltro: boolean = false;
 
   constructor(
     private historialService: HistorialDocumentosService,
@@ -130,8 +132,6 @@ export class HistorialDocumentosComponent implements OnInit {
   onCheckboxChange(event: any, row: any) {
     if (event) {
       this.selection.toggle(row);
-      console.log('📋 Selección actual:', this.selection.selected);
-      console.log('Total seleccionados:', this.selection.selected.length);
     }
   }
 
@@ -139,14 +139,11 @@ export class HistorialDocumentosComponent implements OnInit {
     const valor = await this.sharedService.AlertaGenerica(
       '¿Estás seguro de que deseas eliminar los documentos seleccionados?'
     );
-    console.log(valor);
     if (valor.isConfirmed === false) {
       return;
     }
 
     var tituloCompleto = this.selection.selected.map((doc) => doc.titulo + '.' + doc.tipo);
-    console.log(this.selection.selected.map((doc) => doc.fechaCarga));
-    console.log(tituloCompleto);
     this.loader.start();
     this.historialService
       .EliminarDocumento(

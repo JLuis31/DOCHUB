@@ -15,21 +15,18 @@
             <canvas [id]="'pdf-canvas-' + i"></canvas>
           </ng-container>
           <ng-template #noPdf>
-            <ng-container
-              class="contenedor-de-archivo"
-              *ngIf="
-                archivo?.archivo?.toLowerCase().endsWith('.mp4') ||
-                  archivo?.archivo?.toLowerCase().endsWith('.webm');
-                else noVideo
-              "
-            >
-              <video
-                *ngIf="esVideo(archivo.archivo)"
-                [src]="getVideoUrl(archivo)"
-                controls
-                width="320"
-              ></video>
-            </ng-container>
+            <div (click)="descargar(archivo)">
+              <ng-container
+                class="contenedor-de-archivo"
+                *ngIf="
+                  archivo?.archivo?.toLowerCase().endsWith('.mp4') ||
+                    archivo?.archivo?.toLowerCase().endsWith('.webm');
+                  else noVideo
+                "
+              >
+                <video width="auto" height="170px" controls [src]="getVideoUrl(archivo)"></video>
+              </ng-container>
+            </div>
             <ng-template #noVideo>
               <ng-container
                 *ngIf="
@@ -43,6 +40,7 @@
                 "
               >
                 <img
+                  (click)="descargar(archivo)"
                   [src]="getImagenUrl(archivo)"
                   class="miniatura-imagen"
                   alt="vista previa imagen"

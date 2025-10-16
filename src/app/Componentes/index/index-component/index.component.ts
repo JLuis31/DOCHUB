@@ -61,7 +61,8 @@ export class DashboardComponent implements OnInit {
     private historialDocumentosService: HistorialDocumentosService,
     private sharedServices: SharedServices,
     private cdr: ChangeDetectorRef,
-    private loader: NgxUiLoaderService
+    private loader: NgxUiLoaderService,
+    private historialService: HistorialDocumentosService
   ) {}
 
   getIconoDocumento(nombre: string) {
@@ -97,7 +98,6 @@ export class DashboardComponent implements OnInit {
     this.documentosService.ObtenerDocumentosActivos().subscribe({
       next: (data) => {
         this.archivosSeleccionados = data.datos.slice(0, 4);
-        console.log(data);
 
         this.documentosService
           .ObtenerDocumentos(
@@ -106,7 +106,6 @@ export class DashboardComponent implements OnInit {
           )
           .subscribe({
             next: (res) => {
-              console.log(res);
               this.fechaCarga = res.documentosActivos.datos.map((doc: any) => doc.fechaCarga);
 
               this.espacioOcupado = res.archivosTamaño.megabytesUsados;
@@ -158,16 +157,25 @@ export class DashboardComponent implements OnInit {
 
   getVideoUrl(archivo: any): string {
     if (archivo.contenidoBase64) {
-      const ext = archivo.archivo?.split('.').pop()?.toLowerCase();
-      const mimeType = ext === 'mov' ? 'video/quicktime' : 'video/mp4';
-      return `data:${mimeType};base64,${archivo.contenidoBase64}`;
+      return `data:video/mp4;base64,${archivo.contenidoBase64}`;
     }
     return archivo.rutaDestino || archivo.ruta || '';
   }
 
-  esVideo(archivo: any): boolean {
-    const ext = archivo.archivo?.split('.').pop()?.toLowerCase() || '';
-    return ['mp4', 'webm', 'mov'].includes(ext);
+  async descargar(archivo: any) {
+    this.loader.start();
+    this.historialService.DescargarDocumento(archivo.archivo, archivo.rutaDestino).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = archivo.archivo;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {},
+      complete: () => this.loader.stop(),
+    });
   }
 
   async mostrarMiniaturaPDF(base64: string, canvasId: string, intentos = 0) {

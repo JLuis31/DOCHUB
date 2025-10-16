@@ -5,25 +5,32 @@ import { PerfilService } from './services/perfil.service';
 import { SharedServices } from '../../shared-services/shared-services';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { LoaderComponent } from '../../shared-components/Loader/loader.component';
+import { AutentificacionService } from '../Login/services/autentificacion.services';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
-  imports: [NavComponent, NavLoginComponentResponsivo, LoaderComponent],
+  imports: [NavComponent, NavLoginComponentResponsivo, LoaderComponent, CommonModule],
 })
 export class PerfilComponent implements OnInit {
   public nombre: string = '';
   public email: string = '';
   public contrasena: string = '';
+  public sesionIniciado: boolean = false;
 
   constructor(
     private perfilService: PerfilService,
     private sharedServices: SharedServices,
-    private loader: NgxUiLoaderService
+    private loader: NgxUiLoaderService,
+    private authService: AutentificacionService
   ) {}
 
   ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe((estado) => {
+      this.sesionIniciado = estado;
+    });
     if (localStorage.getItem('accessToken') === null) {
       this.sharedServices.InformacionGenerica('Debe iniciar sesión para acceder a esta sección.');
       this.loader.stop();
@@ -43,5 +50,8 @@ export class PerfilComponent implements OnInit {
         this.loader.stop();
       },
     });
+  }
+  public Logout(): void {
+    this.authService.Logout();
   }
 }

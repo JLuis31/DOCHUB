@@ -38,6 +38,8 @@
     "@fortawesome/fontawesome-free": "^7.1.0",
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@swimlane/ngx-charts": "^23.0.1",
+    "d3": "^7.9.0",
     "express": "^5.1.0",
     "ngx-ui-loader": "^19.0.0",
     "pdfjs-dist": "^5.4.296",

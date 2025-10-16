@@ -46,5 +46,8 @@
         <hr />
       </div>
     </div>
+    <button class="btn-general" *ngIf="sesionIniciado">
+      <a (click)="Logout()" routerLink="/logout">Cerrar Sesión</a>
+    </button>
   </section>
 </div>

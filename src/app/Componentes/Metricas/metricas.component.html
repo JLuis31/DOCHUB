@@ -1,0 +1,36 @@
+<div class="contenedor">
+  <div class="menu-escritorio"><app-nav></app-nav></div>
+  <div class="menu-movil"><app-nav-responsivo></app-nav-responsivo></div>
+
+  <section class="documentos">
+    <header>
+      <h2>Historial de Documentos</h2>
+      <h4>Aquí puedes ver el historial de documentos.</h4>
+    </header>
+
+    <div class="tabla-metricas">
+      <div class="infoDocumentos">
+        <div class="info1">
+          Documentos cargados
+          <div class="datos">125</div>
+        </div>
+        <div class="info2">
+          Espacio utilizado
+          <div class="datos">1.5 GB / 100 MB</div>
+        </div>
+      </div>
+
+      <div class="grafico">
+        <div>Distribución de documentos por categoría</div>
+        <ngx-charts-pie-chart
+          [view]="[600, 300]"
+          [results]="data"
+          [legend]="true"
+          [labels]="true"
+          [doughnut]="false"
+        >
+        </ngx-charts-pie-chart>
+      </div>
+    </div>
+  </section>
+</div>

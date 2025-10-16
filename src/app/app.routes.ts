@@ -9,6 +9,7 @@ import { HistorialDocumentosComponent } from './Componentes/historialDocumentos/
 import { ProductoComponent } from './Componentes/Producto/producto.component';
 import { PerfilComponent } from './Componentes/Perfil/perfil.component';
 import { RecursosComponent } from './Componentes/Recursos/recursos.component';
+import { MetricasComponent } from './Componentes/Metricas/metricas.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'documentos', component: DocumentosComponent },
   { path: 'historial-documentos', component: HistorialDocumentosComponent },
   { path: 'perfil', component: PerfilComponent },
+  { path: 'metricas', component: MetricasComponent },
   { path: 'soluciones', component: SolucionesComponent },
   { path: 'precios', component: PreciosComponent },
   { path: 'producto', component: ProductoComponent },

@@ -27,7 +27,6 @@ export class AutentificacionService {
   }
 
   public RegistroUsuario(usuario: Usuario): Observable<any> {
-    console.log(usuario);
     return this.http.post(`${this.ruta}`, usuario);
   }
 
@@ -36,7 +35,6 @@ export class AutentificacionService {
       .post(`${this.ruta}/login?email=${email}&password=${password}`, {}, { withCredentials: true })
       .pipe(
         tap((res: any) => {
-          console.log(res);
           if (res.token) {
             localStorage.setItem('accessToken', res.token);
             localStorage.setItem('idUsuario', res.id);
@@ -93,9 +91,6 @@ export class AutentificacionService {
   }
 
   public prueba(): Observable<any> {
-    console.log('🧪 Ejecutando prueba...');
-    console.log('🔑 Token actual:', this.getToken());
-    console.log('🍪 Cookies actuales:', document.cookie);
     return this.http.get('http://localhost:5123/api/documentos', { withCredentials: true });
   }
 }
