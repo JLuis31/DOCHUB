@@ -23,7 +23,12 @@
                 else noVideo
               "
             >
-              <video width="150" controls [src]="getVideoUrl(archivo)"></video>
+              <video
+                *ngIf="esVideo(archivo.archivo)"
+                [src]="getVideoUrl(archivo)"
+                controls
+                width="320"
+              ></video>
             </ng-container>
             <ng-template #noVideo>
               <ng-container

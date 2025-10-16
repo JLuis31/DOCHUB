@@ -158,9 +158,16 @@ export class DashboardComponent implements OnInit {
 
   getVideoUrl(archivo: any): string {
     if (archivo.contenidoBase64) {
-      return `data:video/mp4;base64,${archivo.contenidoBase64}`;
+      const ext = archivo.archivo?.split('.').pop()?.toLowerCase();
+      const mimeType = ext === 'mov' ? 'video/quicktime' : 'video/mp4';
+      return `data:${mimeType};base64,${archivo.contenidoBase64}`;
     }
     return archivo.rutaDestino || archivo.ruta || '';
+  }
+
+  esVideo(archivo: any): boolean {
+    const ext = archivo.archivo?.split('.').pop()?.toLowerCase() || '';
+    return ['mp4', 'webm', 'mov'].includes(ext);
   }
 
   async mostrarMiniaturaPDF(base64: string, canvasId: string, intentos = 0) {

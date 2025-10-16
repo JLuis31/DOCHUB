@@ -22,9 +22,7 @@ export class HistorialDocumentosService {
     fechaCarga: Date[]
   ): Observable<any> {
     return this.http.delete(
-      `${this.ruta}/eliminarDocumento?idUsuario=${idUsuario}&titulo=${titulo.join(
-        ','
-      )}&fechaCarga=${fechaCarga.join(',')}`
+      `${this.ruta}/eliminarDocumento?idUsuario=${idUsuario}&titulo=${titulo.join(',')}`
     );
   }
 
