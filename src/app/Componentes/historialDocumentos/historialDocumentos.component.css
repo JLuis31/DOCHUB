@@ -1,35 +1,101 @@
-/* Responsive table container */
+/* === Diseño Responsive para la Tabla === */
+
+/* 🔹 Contenedor principal de la tabla */
+.example-container {
+  max-height: 80vh;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+}
+
+/* 🔹 Scroll horizontal solo cuando sea necesario */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* mejora el scroll en móviles */
 }
 
+/* 🔹 Tabla flexible (Angular Material o normal) */
 table,
 .mat-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto; /* deja que las columnas se ajusten automáticamente */
 }
 
+/* 🔹 Estilo general de celdas */
 th,
 td,
 .mat-header-cell,
 .mat-cell {
-  white-space: nowrap;
-}
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
+  white-space: nowrap; /* evita que el texto se rompa */
+  text-align: center;
+  padding: 8px 12px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+/* 🔹 Fija el header al hacer scroll vertical */
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
 }
 
-th,
-td {
-  white-space: nowrap;
+/* === Botón Eliminar === */
+.eliminar-registros {
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+
+.eliminar-registros:hover {
+  opacity: 0.8;
+}
+
+.eliminar-registros:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* === Ajustes Generales === */
+.contenedor {
+  min-height: 100vh;
+}
+
+section {
+  padding: 1rem;
+  padding-top: 0;
+}
+
+section h4 {
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+section header {
+  padding: 0.5rem;
+}
+
+/* === Campo de búsqueda === */
+.example-header {
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-form-field input {
+  width: 100%;
+}
+
+/* === Responsive: dispositivos pequeños === */
 @media (max-width: 600px) {
   .menu-escritorio {
     display: none;
@@ -44,71 +110,17 @@ td {
     margin-top: -4rem;
     margin-bottom: 4rem;
   }
+
+  .mat-header-cell,
+  .mat-cell {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
 
+/* === Responsive: pantallas grandes === */
 @media (min-width: 601px) {
   .menu-movil {
     display: none;
-  }
-}
-
-.contenedor {
-  min-height: 100vh;
-}
-
-section {
-  padding: 1rem;
-  padding-top: 0%;
-
-  h4 {
-    margin-bottom: 2rem;
-    opacity: 0.7;
-  }
-
-  header {
-    padding: 0.5rem;
-  }
-}
-
-.mat-column-select {
-  overflow: initial;
-}
-
-.eliminar-registros {
-  padding: 0.4rem;
-  margin-bottom: 1rem;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-
-  cursor: pointer;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-
-.eliminar-registros:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-  transform: none;
-}
-
-.example-container {
-  max-height: 80vh;
-  overflow-y: auto;
-  margin-bottom: 2rem;
-}
-
-.example-header {
-  padding: 8px 24px 0;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-
-  input {
-    width: 100%;
   }
 }

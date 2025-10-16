@@ -45,15 +45,7 @@ export class HistorialDocumentosComponent implements OnInit {
   public documentos: any[] = [];
   public DocumentosFormateados = new MatTableDataSource<any>([]);
   public sesionIniciado: boolean = false;
-  columnasMostradas: string[] = [
-    'select',
-    'numeracion',
-    'titulo',
-    'tipo',
-    'estado',
-    'fechaCarga',
-    'descargar',
-  ];
+  columnasMostradas: string[] = ['select', 'numeracion', 'titulo', 'tipo', 'estado', 'descargar'];
   initialSelection = [];
   allowMultiSelect = true;
   selection: SelectionModel<any>;
