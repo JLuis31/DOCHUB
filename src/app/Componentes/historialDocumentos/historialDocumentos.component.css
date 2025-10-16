@@ -1,3 +1,35 @@
+/* Responsive table container */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table,
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td,
+.mat-header-cell,
+.mat-cell {
+  white-space: nowrap;
+}
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  white-space: nowrap;
+}
 @media (max-width: 600px) {
   .menu-escritorio {
     display: none;
