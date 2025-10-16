@@ -6,11 +6,14 @@ import { AutentificacionService } from '../services/autentificacion.services';
 import { Usuario } from '../../../Interfaces/Usuarios.interfaces';
 import { Router } from '@angular/router';
 import { error } from 'console';
+import { RouterLink } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { LoaderComponent } from '../../../shared-components/Loader/loader.component';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css'],
-  imports: [NavLoginComponent, FormsModule],
+  imports: [NavLoginComponent, FormsModule, RouterLink, LoaderComponent],
 })
 export class RegistroComponent {
   public nombre: string = '';
@@ -22,7 +25,8 @@ export class RegistroComponent {
   constructor(
     private sharedServices: SharedServices,
     private autentificacionService: AutentificacionService,
-    private router: Router
+    private router: Router,
+    private loader: NgxUiLoaderService
   ) {}
 
   public validarNombre(nombre: string): boolean {
@@ -61,6 +65,7 @@ export class RegistroComponent {
         refreshToken: '',
         refreshTokenExpiryTime: new Date(),
       };
+      this.loader.start();
       this.autentificacionService.RegistroUsuario(usuario).subscribe({
         next: (res) => {
           console.log(res);
@@ -75,6 +80,7 @@ export class RegistroComponent {
           console.log(err);
           this.sharedServices.ErrorGenerico('Error al registrar el usuario: ' + err.message);
         },
+        complete: () => this.loader.stop(),
       });
     }
   }

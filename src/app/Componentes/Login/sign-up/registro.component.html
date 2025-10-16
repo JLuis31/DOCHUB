@@ -1,3 +1,5 @@
+<app-loader></app-loader>
+
 <div class="registro-container">
   <app-nav-login></app-nav-login>
 
@@ -9,6 +11,9 @@
       <input [(ngModel)]="email" type="email" placeholder="Correo electrónico" />
       <input [(ngModel)]="password" type="password" placeholder="Contraseña" />
       <input [(ngModel)]="confirmPassword" type="password" placeholder="Confirmar contraseña" />
+      <label class="tienesCuenta" for=""
+        >Tienes una cuenta? <a class="conLogin" routerLink="/login">Inicia sesión</a></label
+      >
       <button (click)="onSubmit()">Registrarse</button>
     </div>
     <p>

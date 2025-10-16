@@ -9,10 +9,4 @@
     <a routerLink="/precios">Precios</a>
     <a routerLink="/recursos">Recursos</a>
   </div>
-  <div [ngClass]="{ abierto: menuAbierto }">
-    <button (click)="cambioFuncion()">
-      <span *ngIf="mostrarInicioSesion">Registrate</span>
-      <span *ngIf="mostrarRegistro">Iniciar Sesión</span>
-    </button>
-  </div>
 </nav>
