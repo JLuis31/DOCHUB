@@ -109,6 +109,7 @@ export class DashboardComponent implements OnInit {
               this.fechaCarga = res.documentosActivos.datos.map((doc: any) => doc.fechaCarga);
 
               this.espacioOcupado = res.archivosTamaño.megabytesUsados;
+              localStorage.setItem('espacioOcupado', this.espacioOcupado.toFixed(2));
 
               this.archivosSeleccionados2 = res.archivos.value;
 

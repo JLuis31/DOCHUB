@@ -6,6 +6,15 @@ import { AutentificacionService } from '../../Componentes/Login/services/autenti
 import { OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faUpload,
+  faFileAlt,
+  faUser,
+  faTrash,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-nav-responsivo',
   templateUrl: './nav-responsivo.component.html',
@@ -18,6 +27,12 @@ export class NavLoginComponentResponsivo implements OnInit {
   public menuAbierto: boolean = false;
   public sesionIniciado: boolean = false;
   public fabars = faBars;
+  public faHome = faHome;
+  public faUpload = faUpload;
+  public faFileAlt = faFileAlt;
+  public faUser = faUser;
+  public faTrash = faTrash;
+  public faChartBar = faChartBar;
 
   constructor(
     private router: Router,

@@ -4,18 +4,29 @@
     <a (click)="irAHome()" style="cursor: pointer">DOCHUB</a>
   </header>
   <div class="links menu-desplegable" [ngClass]="{ abierto: menuAbierto }">
-    <a href="/dashboard">Dashboard</a>
-    <a href="/documentos">Carga Documentos</a>
-    <a href="/historial-documentos">Documentos</a>
-    <a href="/perfil">Perfil</a>
-    <a href="/metricas">Métricas</a>
+    <div>
+      <a routerLink="/dashboard"><fa-icon size="lg" [icon]="faHome"></fa-icon> Dashboard</a>
+    </div>
+    <div>
+      <a routerLink="/documentos"
+        ><fa-icon size="lg" [icon]="faUpload"></fa-icon> Carga de Documentos</a
+      >
+    </div>
+    <div>
+      <a routerLink="/historial-documentos"
+        ><fa-icon size="lg" [icon]="faFileAlt"></fa-icon> Documentos</a
+      >
+    </div>
+    <div>
+      <a routerLink="/perfil"><fa-icon size="lg" [icon]="faUser"></fa-icon> Perfil</a>
+    </div>
+    <div>
+      <a routerLink="/metricas"><fa-icon size="lg" [icon]="faChartBar"></fa-icon> Metricas</a>
+    </div>
   </div>
   <div [ngClass]="{ abierto: menuAbierto }">
-    <button *ngIf="!sesionIniciado">
+    <button class="login-nav-responsive" *ngIf="!sesionIniciado">
       <a routerLink="/login">Iniciar Sesión</a>
-    </button>
-    <button *ngIf="sesionIniciado">
-      <a (click)="Logout()" routerLink="/logout">Cerrar Sesión</a>
     </button>
   </div>
 </nav>

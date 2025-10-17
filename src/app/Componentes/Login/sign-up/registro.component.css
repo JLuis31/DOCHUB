@@ -1,6 +1,6 @@
 @media (max-width: 575.98px) {
   .registro-form {
-    width: 20rem;
+    max-width: 90vw;
   }
 }
 

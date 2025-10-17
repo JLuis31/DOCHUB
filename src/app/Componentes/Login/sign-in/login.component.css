@@ -1,9 +1,8 @@
 @media (max-width: 575.98px) {
   .login-form {
-    width: 20rem;
+    max-width: 90vw;
   }
 }
-
 .login-container {
   height: 100vh;
 }

@@ -45,10 +45,10 @@ section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
     align-items: center;
     margin: auto;
-    gap: 5rem;
+    gap: 2rem;
 
     .info1,
     .info2 {
@@ -75,7 +75,10 @@ section {
   }
 
   .grafico {
+    width: 100%;
     div {
+      width: 100%;
+      margin: auto;
       text-align: center;
       font-weight: bold;
       margin-bottom: 2rem;
@@ -85,5 +88,18 @@ section {
       padding: 0.5rem;
       border-radius: 0.5rem;
     }
+  }
+}
+ngx-charts-pie-chart {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+
+@media (max-width: 600.99px) {
+  section .infoDocumentos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }

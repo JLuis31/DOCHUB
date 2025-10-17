@@ -6,6 +6,7 @@ import { AutentificacionService } from '../../Componentes/Login/services/autenti
 import { OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBox, faLightbulb, faTags, faBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-login',
@@ -18,6 +19,10 @@ export class NavLoginComponent implements OnInit {
   public isLogged: boolean = false;
   public menuAbierto: boolean = false;
   faBars = faBars;
+  faBox = faBox;
+  faLightbulb = faLightbulb;
+  faTags = faTags;
+  faBook = faBook;
 
   constructor(
     private router: Router,

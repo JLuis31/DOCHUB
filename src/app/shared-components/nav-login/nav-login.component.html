@@ -4,9 +4,17 @@
     <a (click)="irAHome()" style="cursor: pointer">DOCHUB</a>
   </header>
   <div class="links menu-desplegable" [ngClass]="{ abierto: menuAbierto }">
-    <a routerLink="/producto">Producto</a>
-    <a routerLink="/soluciones">Soluciones</a>
-    <a routerLink="/precios">Precios</a>
-    <a routerLink="/recursos">Recursos</a>
+    <div>
+      <a routerLink="/producto"><fa-icon [icon]="faBox"></fa-icon> Producto</a>
+    </div>
+    <div>
+      <a routerLink="/soluciones"><fa-icon [icon]="faLightbulb"></fa-icon> Soluciones</a>
+    </div>
+    <div>
+      <a routerLink="/precios"><fa-icon [icon]="faTags"></fa-icon> Precios</a>
+    </div>
+    <div>
+      <a routerLink="/recursos"><fa-icon [icon]="faBook"></fa-icon> Recursos</a>
+    </div>
   </div>
 </nav>
