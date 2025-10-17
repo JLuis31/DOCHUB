@@ -5,16 +5,18 @@
   </header>
   <div class="links menu-desplegable" [ngClass]="{ abierto: menuAbierto }">
     <div>
-      <a routerLink="/producto"><fa-icon [icon]="faBox"></fa-icon> Producto</a>
+      <a routerLink="/producto"><fa-icon class="icono-menu" [icon]="faBox"></fa-icon> Producto</a>
     </div>
     <div>
-      <a routerLink="/soluciones"><fa-icon [icon]="faLightbulb"></fa-icon> Soluciones</a>
+      <a routerLink="/soluciones"
+        ><fa-icon class="icono-menu" [icon]="faLightbulb"></fa-icon> Soluciones</a
+      >
     </div>
     <div>
-      <a routerLink="/precios"><fa-icon [icon]="faTags"></fa-icon> Precios</a>
+      <a routerLink="/precios"><fa-icon class="icono-menu" [icon]="faTags"></fa-icon> Precios</a>
     </div>
     <div>
-      <a routerLink="/recursos"><fa-icon [icon]="faBook"></fa-icon> Recursos</a>
+      <a routerLink="/recursos"><fa-icon class="icono-menu" [icon]="faBook"></fa-icon> Recursos</a>
     </div>
   </div>
 </nav>

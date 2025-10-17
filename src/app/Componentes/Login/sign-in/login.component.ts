@@ -45,11 +45,11 @@ export class LoginComponent {
             var token = this.autentificacionService.getToken();
             this.router.navigate(['/dashboard']);
           } else {
-            this.sharedServices.ErrorGenerico('Error al iniciar sesión: ' + res.mensaje);
+            this.sharedServices.ErrorGenerico('Error al iniciar sesión');
           }
         },
         error: (err) => {
-          this.sharedServices.ErrorGenerico('Error al iniciar sesión: ' + err.message);
+          this.sharedServices.ErrorGenerico('Error al iniciar sesión');
         },
         complete: () => {
           this.loader.stop();

@@ -72,11 +72,11 @@ export class RegistroComponent {
             this.sharedServices.RegistroExitoso('Usuario registrado con éxito');
             this.router.navigate(['/login']);
           } else {
-            this.sharedServices.ErrorGenerico('Error al registrar el usuario: ' + res.mensaje);
+            this.sharedServices.ErrorGenerico('Error al registrar el usuario');
           }
         },
         error: (err) => {
-          this.sharedServices.ErrorGenerico('Error al registrar el usuario: ' + err.message);
+          this.sharedServices.ErrorGenerico('Error al registrar el usuario');
         },
         complete: () => this.loader.stop(),
       });

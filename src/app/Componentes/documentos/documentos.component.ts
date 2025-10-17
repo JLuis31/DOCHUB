@@ -64,7 +64,7 @@ export class DocumentosComponent {
           this.NombreArchivoSeleccionado = '';
         },
         error: (err) => {
-          this.sharedServices.ErrorGenerico(`Error al subir el documento, ${err.error.mensaje}`);
+          this.sharedServices.ErrorGenerico(`Error al subir el documento`);
           this.loader.stop();
         },
         complete: () => this.loader.stop(),

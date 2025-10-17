@@ -4,12 +4,14 @@ import { NavLoginComponentResponsivo } from '../../shared-components/nav-login c
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { OnInit } from '@angular/core';
 import { MetricasService } from './services/metricas.service';
-
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { LoaderComponent } from '../../shared-components/Loader/loader.component';
+import { SharedServices } from '../../shared-services/shared-services';
 @Component({
   selector: 'app-metricas',
   templateUrl: './metricas.component.html',
   styleUrls: ['./metricas.component.css'],
-  imports: [NavComponent, NavLoginComponentResponsivo, NgxChartsModule],
+  imports: [NavComponent, NavLoginComponentResponsivo, NgxChartsModule, LoaderComponent],
 })
 export class MetricasComponent implements OnInit {
   public espacioOcupado: number = Number(localStorage.getItem('espacioOcupado'));
@@ -17,10 +19,15 @@ export class MetricasComponent implements OnInit {
   public tiposUnicos: string[] = [];
   public CantidadCadaTipo: { name: string; value: number }[] = [];
 
-  constructor(private metricasService: MetricasService) {}
+  constructor(
+    private metricasService: MetricasService,
+    private loader: NgxUiLoaderService,
+    private sharedServices: SharedServices
+  ) {}
   public data: { name: string; value: number }[] = [];
 
   ngOnInit(): void {
+    this.loader.start();
     this.metricasService.obtenerMetricas().subscribe({
       next: (data) => {
         const tipos = (data as any).datos.split(',').map((t: string) => t.trim());
@@ -34,10 +41,10 @@ export class MetricasComponent implements OnInit {
         console.log(data);
       },
       error: (error) => {
-        console.error('Error al obtener las métricas', error);
+        this.sharedServices.InformacionGenerica('No se pudieron obtener las métricas');
       },
       complete: () => {
-        console.log('Solicitud de métricas completada');
+        this.loader.stop();
       },
     });
   }

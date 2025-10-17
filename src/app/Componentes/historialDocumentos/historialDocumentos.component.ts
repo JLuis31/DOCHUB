@@ -101,7 +101,7 @@ export class HistorialDocumentosComponent implements OnInit {
         this.sharedService.InformacionGenerica('Para eliminar seleccione documentos');
       },
       error: (err) => {
-        this.sharedService.ErrorGenerico(`Error al cargar los documentos: ${err.message}`);
+        this.sharedService.ErrorGenerico(`Error al cargar los documentos`);
         console.error(err);
       },
       complete: () => this.loader.stop(),
@@ -161,7 +161,7 @@ export class HistorialDocumentosComponent implements OnInit {
           }
         },
         error: (err) => {
-          this.sharedService.ErrorGenerico(`Error al eliminar los documentos: ${err.message}`);
+          this.sharedService.ErrorGenerico(`Error al eliminar los documentos`);
         },
         complete: () => this.loader.stop(),
       });
@@ -180,7 +180,7 @@ export class HistorialDocumentosComponent implements OnInit {
         window.URL.revokeObjectURL(url);
       },
       error: (err) => {
-        console.error('❌ Error al descargar:', err);
+        this.sharedService.ErrorGenerico(`Error al descargar el documento`);
       },
       complete: () => this.loader.stop(),
     });
