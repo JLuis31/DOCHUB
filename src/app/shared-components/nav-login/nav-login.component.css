@@ -58,6 +58,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    flex: 1;
 
     a {
       list-style: none;

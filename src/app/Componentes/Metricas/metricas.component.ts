@@ -18,6 +18,7 @@ export class MetricasComponent implements OnInit {
   public cantidadTipos: number = 0;
   public tiposUnicos: string[] = [];
   public CantidadCadaTipo: { name: string; value: number }[] = [];
+  public tipos: string[] = [];
 
   constructor(
     private metricasService: MetricasService,
@@ -30,13 +31,13 @@ export class MetricasComponent implements OnInit {
     this.loader.start();
     this.metricasService.obtenerMetricas().subscribe({
       next: (data) => {
-        const tipos = (data as any).datos.split(',').map((t: string) => t.trim());
-        this.tiposUnicos = Array.from(new Set(tipos));
+        this.tipos = (data as any).datos.split(',').map((t: string) => t.trim());
+        this.tiposUnicos = Array.from(new Set(this.tipos));
         this.CantidadCadaTipo = this.tiposUnicos.map((tipo) => ({
           name: tipo,
-          value: tipos.filter((t: string) => t === tipo).length,
+          value: this.tipos.filter((t: string) => t === tipo).length,
         }));
-        this.cantidadTipos = tipos.length;
+        this.cantidadTipos = this.tipos.length;
         this.data = this.CantidadCadaTipo;
         console.log(data);
       },

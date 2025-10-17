@@ -123,4 +123,5 @@ hr {
   background-color: rgb(56, 126, 255);
   margin-bottom: 10px;
   width: 20%;
+  white-space: nowrap;
 }
