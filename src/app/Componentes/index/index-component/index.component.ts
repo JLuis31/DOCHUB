@@ -18,6 +18,7 @@ import { registerLocaleData } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoaderComponent } from '../../../shared-components/Loader/loader.component';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { EspacioService } from '../../../shared-services/espacio.service';
 
 GlobalWorkerOptions.workerSrc = './assets/pdfjs-dist/build/pdf.worker.mjs';
 
@@ -62,7 +63,8 @@ export class DashboardComponent implements OnInit {
     private sharedServices: SharedServices,
     private cdr: ChangeDetectorRef,
     private loader: NgxUiLoaderService,
-    private historialService: HistorialDocumentosService
+    private historialService: HistorialDocumentosService,
+    private espacioService: EspacioService
   ) {}
 
   getIconoDocumento(nombre: string) {
@@ -109,7 +111,7 @@ export class DashboardComponent implements OnInit {
               this.fechaCarga = res.documentosActivos.datos.map((doc: any) => doc.fechaCarga);
 
               this.espacioOcupado = res.archivosTamaño.megabytesUsados;
-              localStorage.setItem('espacioOcupado', this.espacioOcupado.toFixed(2));
+              this.espacioService.setEspacioOcupado(this.espacioOcupado);
 
               this.archivosSeleccionados2 = res.archivos.value;
 

@@ -7,6 +7,7 @@ import { MetricasService } from './services/metricas.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { LoaderComponent } from '../../shared-components/Loader/loader.component';
 import { SharedServices } from '../../shared-services/shared-services';
+import { EspacioService } from '../../shared-services/espacio.service';
 @Component({
   selector: 'app-metricas',
   templateUrl: './metricas.component.html',
@@ -14,7 +15,7 @@ import { SharedServices } from '../../shared-services/shared-services';
   imports: [NavComponent, NavLoginComponentResponsivo, NgxChartsModule, LoaderComponent],
 })
 export class MetricasComponent implements OnInit {
-  public espacioOcupado: number = Number(localStorage.getItem('espacioOcupado'));
+  public espacioOcupado: number = 0;
   public cantidadTipos: number = 0;
   public tiposUnicos: string[] = [];
   public CantidadCadaTipo: { name: string; value: number }[] = [];
@@ -23,8 +24,13 @@ export class MetricasComponent implements OnInit {
   constructor(
     private metricasService: MetricasService,
     private loader: NgxUiLoaderService,
-    private sharedServices: SharedServices
-  ) {}
+    private sharedServices: SharedServices,
+    private espacioService: EspacioService
+  ) {
+    this.espacioService.espacioOcupado$.subscribe((valor) => {
+      this.espacioOcupado = valor;
+    });
+  }
   public data: { name: string; value: number }[] = [];
 
   ngOnInit(): void {
